@@ -7,7 +7,18 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
         "properties": {
           "value": "",
           "scope": "local",
@@ -15,22 +26,10 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
-        "object_type": ""
+        "object_type": "variable_workflow"
       },
       {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "tenantId",
-          "type": "datatype.string",
-          "description": "Tenant ID for a given Display Name"
-        },
-        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
-        "object_type": ""
-      },
-      {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
         "properties": {
           "value": "",
           "scope": "input",
@@ -39,10 +38,10 @@
           "description": "Input from User that we will search on"
         },
         "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
-        "object_type": ""
+        "object_type": "variable_workflow"
       },
       {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
         "properties": {
           "value": "",
           "scope": "input",
@@ -51,10 +50,22 @@
           "description": "Serial Number of the Device"
         },
         "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
-        "object_type": ""
+        "object_type": "variable_workflow"
       },
       {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "tenantId",
+          "type": "datatype.string",
+          "description": "Tenant ID for a given Display Name"
+        },
+        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
         "properties": {
           "value": "",
           "scope": "output",
@@ -62,10 +73,10 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
-        "object_type": ""
+        "object_type": "variable_workflow"
       },
       {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
+        "schema_id": "01gQeFm0rYsr8X9Lp2uxcK6IEIdcrWOfY",
         "properties": {
           "value": "",
           "scope": "local",
@@ -73,18 +84,7 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
-        "object_type": ""
-      },
-      {
-        "schema_id": "01LIVHJ79foFdkoiDwsyTbr06plW4fB0j",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
-        "object_type": ""
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -92,6 +92,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
+      "description": "MSX Test",
       "display_name": "MSX Gets CPE Enable Password",
       "favorite": false,
       "target": {
@@ -356,6 +357,7 @@
           "allow_auto_redirect": true,
           "content_type": "application/json",
           "continue_on_error_status_code": false,
+          "continue_on_failure": false,
           "custom_headers": [
             {
               "name": "Authorization",
@@ -365,7 +367,7 @@
           "description": "Get a complete list of devices",
           "display_name": "/manage/api/v1/devices",
           "method": "GET",
-          "relative_url": "/manage/api/v1/devices?serialKey=9KOHJWKIS7F\u0026isReturningOperationalStatus=false\u0026tenantId=d9adc758-75e2-408e-92ce-b56191f26b45",
+          "relative_url": "/manage/api/v1/devices?serialKey=$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN$\u0026isReturningOperationalStatus=false\u0026tenantId=$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.local.variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8$",
           "runtime_user": {
             "override_target_runtime_user": false,
             "target_default": true
