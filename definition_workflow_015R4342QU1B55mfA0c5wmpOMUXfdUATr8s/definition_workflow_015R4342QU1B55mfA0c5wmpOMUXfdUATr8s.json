@@ -1,0 +1,175 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_015R4342QU1B55mfA0c5wmpOMUXfdUATr8s",
+    "name": "Forced Delete of a vBranch Site",
+    "title": "Forced Delete of a vBranch Site",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "userToken",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015R4AOGCC8X90gjNzuqmRVwY57U1CjhoiU",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Sends a Request to an MSX Server to force the Delete of an NFVIS CPE. This may because that Site has gone in error.",
+      "display_name": "Forced Delete of a vBranch Site",
+      "favorite": false,
+      "target": {
+        "target_type": "web-service.endpoint",
+        "specify_on_workflow_start": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_015R44M99UUPL1aszg937Ss1nAFK6dZ2xUR",
+        "name": "HTTP Request",
+        "title": "Get User Token for System",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\"username\": \"superuser\", \"password\": \"F7GDFtCzSJ\"}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "display_name": "Get User Token for System",
+          "method": "POST",
+          "relative_url": "/idm/api/v1/login",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015R4A99FEO1E0aAXEHnsZlowoWJYontZVV",
+        "name": "JSONPath Query",
+        "title": "Parse the User Token",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Parse the User Token",
+          "input_json": "$activity.definition_activity_015R44M99UUPL1aszg937Ss1nAFK6dZ2xUR.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.responseObject.userToken",
+              "jsonpath_query_name": "userToken",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015R4K3QLUY0352K1WwZiZL03yAwHcNM5H0",
+        "name": "HTTP Request",
+        "title": "Get All vBranch Sites",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_015R4A99FEO1E0aAXEHnsZlowoWJYontZVV.output.jsonpath_queries.userToken$"
+            }
+          ],
+          "display_name": "Get All vBranch Sites",
+          "method": "GET",
+          "relative_url": "/vbranch/api/v1/allsites",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_015R4OGCK0L4F4bSlesK2Kk9cyibrDXEvDe",
+        "name": "HTTP Request",
+        "title": "Force Delete on SiteID",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_015R4A99FEO1E0aAXEHnsZlowoWJYontZVV.output.jsonpath_queries.userToken$"
+            }
+          ],
+          "display_name": "Force Delete on SiteID",
+          "method": "POST",
+          "relative_url": "/vbranch/api/v1/site/?forceIfSiteHasFailedDeletion=True",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_01MLGUc8LieufuQUDFFPQOwDG5HV7yhbw"
+    ]
+  },
+  "categories": {
+    "category_01MLGUc8LieufuQUDFFPQOwDG5HV7yhbw": {
+      "unique_name": "category_01MLGUc8LieufuQUDFFPQOwDG5HV7yhbw",
+      "name": "Mike Category",
+      "title": "Mike Category",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "My Cat!!!",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  }
+}
