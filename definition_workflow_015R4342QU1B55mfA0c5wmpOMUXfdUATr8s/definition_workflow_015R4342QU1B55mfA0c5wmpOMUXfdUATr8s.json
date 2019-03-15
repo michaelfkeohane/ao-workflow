@@ -10,6 +10,17 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
+          "scope": "local",
+          "name": "userToken",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_015R4AOGCC8X90gjNzuqmRVwY57U1CjhoiU",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
           "scope": "input",
           "name": "serialNumber",
           "type": "datatype.string"
@@ -26,17 +37,6 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_015RAER97ZJWW25Ht6mau3j0DBGRdvvu6vT",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "userToken",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_015R4AOGCC8X90gjNzuqmRVwY57U1CjhoiU",
         "object_type": "variable_workflow"
       }
     ],
@@ -270,6 +270,42 @@
                           "variable_value_new": "$activity.definition_activity_015R9DDDO8DIX2mmqfuHDRyCGEJ2Wfo6zXA.input.source_array[@].siteId$"
                         }
                       ]
+                    },
+                    "object_type": "definition_activity"
+                  },
+                  {
+                    "unique_name": "definition_activity_015RAODCDNJ4Q4vDsVUGJsWkVTSOR2H3I75",
+                    "name": "HTTP Request",
+                    "title": "Forced Delete Request",
+                    "type": "web-service.http_request",
+                    "base_type": "activity",
+                    "properties": {
+                      "accept": "application/json",
+                      "action_timeout": 180,
+                      "allow_auto_redirect": true,
+                      "content_type": "application/json",
+                      "continue_on_error_status_code": false,
+                      "continue_on_failure": false,
+                      "custom_headers": [
+                        {
+                          "name": "Authorization",
+                          "value": "Bearer $activity.definition_activity_015R4A99FEO1E0aAXEHnsZlowoWJYontZVV.output.jsonpath_queries.userToken$"
+                        }
+                      ],
+                      "description": "Given a Valid SiteID, Request MSX to force a Delete on that SiteID",
+                      "display_name": "Forced Delete Request",
+                      "method": "DELETE",
+                      "relative_url": "/vbranch/api/v1/site/$workflow.definition_workflow_015R4342QU1B55mfA0c5wmpOMUXfdUATr8s.local.variable_workflow_015RAER97ZJWW25Ht6mau3j0DBGRdvvu6vT$?forceIfSiteHasFailedDeletion=True",
+                      "runtime_user": {
+                        "override_target_runtime_user": false,
+                        "target_default": true
+                      },
+                      "target": {
+                        "override_workflow_target": false,
+                        "override_workflow_target_group_criteria": false,
+                        "use_workflow_target": true,
+                        "use_workflow_target_group": false
+                      }
                     },
                     "object_type": "definition_activity"
                   }
