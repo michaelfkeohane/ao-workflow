@@ -10,34 +10,11 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "output",
-          "name": "cpePassword",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
           "scope": "local",
           "name": "username",
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "deviceSerial",
-          "type": "datatype.string",
-          "description": "Serial Number of the Device"
-        },
-        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
         "object_type": "variable_workflow"
       },
       {
@@ -52,13 +29,14 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.secure_string",
+        "schema_id": "datatype.string",
         "properties": {
+          "value": "",
           "scope": "input",
-          "name": "MSX-Password",
-          "type": "datatype.secure_string"
+          "name": "MSX-Username",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
         "object_type": "variable_workflow"
       },
       {
@@ -86,14 +64,36 @@
         "object_type": "variable_workflow"
       },
       {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "MSX-Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "password",
+          "scope": "input",
+          "name": "deviceSerial",
+          "type": "datatype.string",
+          "description": "Serial Number of the Device"
+        },
+        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "cpePassword",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
         "object_type": "variable_workflow"
       },
       {
@@ -111,11 +111,11 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
+          "scope": "local",
+          "name": "password",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       }
     ],
@@ -480,6 +480,24 @@
                     "use_workflow_target": true,
                     "use_workflow_target_group": false
                   }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_0175M0IXGLOV06NcfGohXuA9OGbvNy9j990",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.output.variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4$",
+                      "variable_value_new": "$activity.definition_activity_0175FCCOWS5104ThomEIQp0IdqxmbJUN7RR.output.response_body$"
+                    }
+                  ]
                 },
                 "object_type": "definition_activity"
               }
