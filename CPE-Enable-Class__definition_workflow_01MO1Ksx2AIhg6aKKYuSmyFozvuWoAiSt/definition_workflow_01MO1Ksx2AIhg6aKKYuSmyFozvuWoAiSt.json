@@ -9,23 +9,24 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "3.6",
-          "scope": "input",
-          "name": "Version",
-          "type": "datatype.string"
+          "value": "",
+          "scope": "local",
+          "name": "tenantId",
+          "type": "datatype.string",
+          "description": "Tenant ID for a given Display Name"
         },
-        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
+        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "username",
+          "scope": "output",
+          "name": "cpePassword",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
+        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
         "object_type": "variable_workflow"
       },
       {
@@ -42,6 +43,17 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "3.6",
+          "scope": "input",
+          "name": "Version",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "",
           "scope": "input",
           "name": "tenantName",
@@ -49,17 +61,6 @@
           "description": "Input from User that we will search on"
         },
         "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "cpePassword",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
         "object_type": "variable_workflow"
       },
       {
@@ -89,11 +90,10 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "tenantId",
-          "type": "datatype.string",
-          "description": "Tenant ID for a given Display Name"
+          "name": "password",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       },
       {
@@ -101,10 +101,10 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "password",
+          "name": "username",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
         "object_type": "variable_workflow"
       },
       {
@@ -282,67 +282,22 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro",
-        "name": "For Each",
-        "title": "For Each Element in the Tenant  Array",
-        "type": "logic.for_each",
+        "unique_name": "definition_activity_01MdjopZCIW0v7ND9Ty5RbDWu3nZ0Kblo",
+        "name": "Set Variables",
+        "title": "Set tenantID",
+        "type": "core.set_multiple_variables",
         "base_type": "activity",
         "properties": {
-          "display_name": "For Each Element in the Tenant  Array",
-          "source_array": "$activity.definition_activity_01MaGdA5IFS5yCvg2puHotr1oS5FoEHzq.output.read_table_from_json$"
+          "continue_on_failure": false,
+          "display_name": "Set tenantID",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.local.variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8$",
+              "variable_value_new": "6793e3bf-4197-4a27-9b0d-9c9d635e78b7"
+            }
+          ]
         },
-        "object_type": "definition_activity",
-        "actions": [
-          {
-            "unique_name": "definition_activity_01MdjB9gt25zBz8XlAVZ7YMPwimrIpurc",
-            "name": "Condition Block",
-            "title": "Condition Block",
-            "type": "logic.if_else",
-            "base_type": "activity",
-            "properties": {
-              "display_name": "Condition Block"
-            },
-            "object_type": "definition_activity",
-            "blocks": [
-              {
-                "unique_name": "definition_activity_01MdjBBqUttF2OBTu26lEaw1oziaBZlcF",
-                "name": "Condition Branch",
-                "title": "If DisplayName  Matches",
-                "type": "logic.condition_block",
-                "base_type": "activity",
-                "properties": {
-                  "condition": {
-                    "left_operand": "$activity.definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro.input.source_array[@].displayName$",
-                    "operator": "eq",
-                    "right_operand": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk$"
-                  },
-                  "description": "Match the inputed Display Name Against the List\n",
-                  "display_name": "If DisplayName  Matches"
-                },
-                "object_type": "definition_activity",
-                "actions": [
-                  {
-                    "unique_name": "definition_activity_01MdjopZCIW0v7ND9Ty5RbDWu3nZ0Kblo",
-                    "name": "Set Variables",
-                    "title": "Set tenantID",
-                    "type": "core.set_multiple_variables",
-                    "base_type": "activity",
-                    "properties": {
-                      "display_name": "Set tenantID",
-                      "variables_to_update": [
-                        {
-                          "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.local.variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8$",
-                          "variable_value_new": "$activity.definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro.input.source_array[@].tenantId$"
-                        }
-                      ]
-                    },
-                    "object_type": "definition_activity"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
+        "object_type": "definition_activity"
       },
       {
         "unique_name": "definition_activity_01MdlkpSns1rDaJah3qWdrM2p9pDJy7d9",
