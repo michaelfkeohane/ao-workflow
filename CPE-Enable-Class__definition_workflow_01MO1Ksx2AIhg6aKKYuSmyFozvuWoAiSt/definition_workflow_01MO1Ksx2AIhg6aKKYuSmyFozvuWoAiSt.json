@@ -11,32 +11,10 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "username",
+          "name": "cpeName",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "3.6",
-          "scope": "input",
-          "name": "Version",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
         "object_type": "variable_workflow"
       },
       {
@@ -55,6 +33,18 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
+          "scope": "input",
+          "name": "deviceSerial",
+          "type": "datatype.string",
+          "description": "Serial Number of the Device"
+        },
+        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
           "scope": "local",
           "name": "tenantId",
           "type": "datatype.string",
@@ -64,25 +54,25 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.secure_string",
+        "schema_id": "datatype.string",
         "properties": {
-          "scope": "input",
-          "name": "MSX-Password",
-          "type": "datatype.secure_string"
+          "value": "",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
+        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "input",
-          "name": "deviceSerial",
-          "type": "datatype.string",
-          "description": "Serial Number of the Device"
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       },
       {
@@ -100,22 +90,32 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "cpeName",
+          "scope": "input",
+          "name": "MSX-Username",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "MSX-Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
+          "value": "3.6",
+          "scope": "input",
+          "name": "Version",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
         "object_type": "variable_workflow"
       }
     ],
@@ -469,7 +469,7 @@
                   ],
                   "display_name": "Get 3.6 Tenant Secret",
                   "method": "GET",
-                  "relative_url": "/idm/api/v2/secrets/scope/tenantId=$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.local.variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8$,deviceId=$activity.definition_activity_01Mgj5yGzXz1UC0WSuGfgRuCsDQRusRH3.output.jsonpath_queries.deviceId$",
+                  "relative_url": "/idm/api/v2/secrets/scope/tenantId=6793e3bf-4197-4a27-9b0d-9c9d635e78b7,deviceId=$activity.definition_activity_01Mgj5yGzXz1UC0WSuGfgRuCsDQRusRH3.output.jsonpath_queries.deviceId$",
                   "runtime_user": {
                     "override_target_runtime_user": false,
                     "target_default": true
