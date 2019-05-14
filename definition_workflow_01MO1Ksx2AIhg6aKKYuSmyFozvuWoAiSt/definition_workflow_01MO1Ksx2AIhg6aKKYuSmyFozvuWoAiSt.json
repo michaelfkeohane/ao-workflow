@@ -1,11 +1,23 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt",
-    "name": "MSX Gets CPE Enable Password",
-    "title": "MSX Gets CPE Enable Password",
+    "name": "MSX Gets CPE Enable Password M",
+    "title": "MSX Gets CPE Enable Password M",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "deviceSerial",
+          "type": "datatype.string",
+          "description": "Serial Number of the Device"
+        },
+        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "datatype.string",
         "properties": {
@@ -20,12 +32,23 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
+          "value": "3.6",
+          "scope": "input",
+          "name": "Version",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "cpeName",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
         "object_type": "variable_workflow"
       },
       {
@@ -44,11 +67,21 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "tenantName",
-          "type": "datatype.string",
-          "description": "Input from User that we will search on"
+          "name": "MSX-Username",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       },
       {
@@ -56,22 +89,11 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "deviceSerial",
+          "name": "tenantName",
           "type": "datatype.string",
-          "description": "Serial Number of the Device"
+          "description": "Input from User that we will search on"
         },
-        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "3.6",
-          "scope": "input",
-          "name": "Version",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
+        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
         "object_type": "variable_workflow"
       },
       {
@@ -95,28 +117,6 @@
         },
         "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
         "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "cpeName",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
-        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -125,7 +125,7 @@
       },
       "delete_workflow_instance": false,
       "description": "MSX Test",
-      "display_name": "MSX Gets CPE Enable Password",
+      "display_name": "MSX Gets CPE Enable Password M",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
