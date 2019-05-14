@@ -122,7 +122,7 @@
           "custom_headers": [
             {
               "name": "Authorization",
-              "value": "Bearer  \n$activity.definition_activity_01767IDJ6Q3H15yClZ8uZTGhAopg5HwdBL4.output.jsonpath_queries.userToken$"
+              "value": "Bearer $activity.definition_activity_01767IDJ6Q3H15yClZ8uZTGhAopg5HwdBL4.output.jsonpath_queries.userToken$"
             }
           ],
           "display_name": "iPnP Query",
@@ -135,6 +135,24 @@
             "override_workflow_target": true,
             "target_id": "definition_target_017688BYZGKXD3SdgzNDDuwqW1kwugzfiHa"
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_0176DIZUQR79S0uCdjaMS6m21SU3mO953Sd",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM.output.variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ$",
+              "variable_value_new": "$activity.definition_activity_017682EOS6C6H6yKeyUbF2UUlMFnnE2hpcD.output.response_body$"
+            }
+          ]
         },
         "object_type": "definition_activity"
       }
@@ -167,7 +185,7 @@
       "base_type": "target",
       "object_type": "definition_target",
       "properties": {
-        "disable_certificate_validation": false,
+        "disable_certificate_validation": true,
         "display_name": "AIO-15-iPnP",
         "host": "198.135.4.155",
         "no_runtime_user": true,
