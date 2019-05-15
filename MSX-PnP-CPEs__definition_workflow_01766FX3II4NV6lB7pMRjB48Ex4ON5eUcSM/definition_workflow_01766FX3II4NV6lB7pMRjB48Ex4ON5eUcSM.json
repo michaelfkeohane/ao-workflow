@@ -7,16 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "scope": "input",
-          "name": "Password",
-          "type": "datatype.secure_string"
-        },
-        "unique_name": "variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "Output",
@@ -37,6 +27,16 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi",
         "object_type": "variable_workflow"
       }
     ],
@@ -187,7 +187,7 @@
       "properties": {
         "disable_certificate_validation": true,
         "display_name": "AIO-15-iPnP",
-        "host": "198.135.4.155",
+        "host": "198.135.4.153",
         "no_runtime_user": true,
         "port": 8443,
         "protocol": "https"
