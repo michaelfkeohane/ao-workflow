@@ -7,38 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "scope": "input",
-          "name": "MSX-Password",
-          "type": "datatype.secure_string"
-        },
-        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
@@ -47,40 +15,6 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "deviceSerial",
-          "type": "datatype.string",
-          "description": "Serial Number of the Device"
-        },
-        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "3.6",
-          "scope": "input",
-          "name": "Version",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
         "object_type": "variable_workflow"
       },
       {
@@ -99,11 +33,21 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "tenantName",
-          "type": "datatype.string",
-          "description": "Input from User that we will search on"
+          "name": "MSX-Username",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "3.6",
+          "scope": "input",
+          "name": "Version",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
         "object_type": "variable_workflow"
       },
       {
@@ -117,6 +61,62 @@
         },
         "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "MSX-Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "deviceSerial",
+          "type": "datatype.string",
+          "description": "Serial Number of the Device"
+        },
+        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "tenantName",
+          "type": "datatype.string",
+          "description": "Input from User that we will search on"
+        },
+        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -129,8 +129,7 @@
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
-        "target_id": "definition_target_0166EBFEZQKFH3ETSzKn9qvbHW87tfSVzuA",
-        "execute_on_workflow_target": true
+        "specify_on_workflow_start": true
       }
     },
     "object_type": "definition_workflow",
@@ -626,23 +625,6 @@
       "description": "Category to support MSX Operational Workflows",
       "category_type": "custom",
       "object_type": "category"
-    }
-  },
-  "targets": {
-    "definition_target_0166EBFEZQKFH3ETSzKn9qvbHW87tfSVzuA": {
-      "unique_name": "definition_target_0166EBFEZQKFH3ETSzKn9qvbHW87tfSVzuA",
-      "name": "AIO15",
-      "title": "AIO15",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "disable_certificate_validation": true,
-        "display_name": "AIO15",
-        "host": "bxbdmzaio15.tme.ciscomsx.com",
-        "no_runtime_user": true,
-        "protocol": "https"
-      }
     }
   }
 }
