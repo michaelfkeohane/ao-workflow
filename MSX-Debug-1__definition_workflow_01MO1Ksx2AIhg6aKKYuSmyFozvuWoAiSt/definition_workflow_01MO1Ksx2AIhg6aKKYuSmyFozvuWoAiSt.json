@@ -1,43 +1,11 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt",
-    "name": "MSX Gets CPE Enable Password M",
-    "title": "MSX Gets CPE Enable Password M",
+    "name": "MSX Gets CPE Enable Password",
+    "title": "MSX Gets CPE Enable Password",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "tenantId",
-          "type": "datatype.string",
-          "description": "Tenant ID for a given Display Name"
-        },
-        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "scope": "output",
-          "name": "loopRun",
-          "type": "datatype.integer"
-        },
-        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "scope": "output",
-          "name": "loopLimit",
-          "type": "datatype.integer"
-        },
-        "unique_name": "variable_workflow_0179H0LQ6S3EQ0d4wTigdkXzbSETDvRy2Q6",
-        "object_type": "variable_workflow"
-      },
       {
         "schema_id": "datatype.string",
         "properties": {
@@ -52,13 +20,12 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
+          "value": "3.6",
           "scope": "input",
-          "name": "tenantName",
-          "type": "datatype.string",
-          "description": "Input from User that we will search on"
+          "name": "Version",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
+        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
         "object_type": "variable_workflow"
       },
       {
@@ -77,10 +44,31 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "cpeName",
+          "name": "username",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
+        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "scope": "output",
+          "name": "loopLimit",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_0179H0LQ6S3EQ0d4wTigdkXzbSETDvRy2Q6",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "tenantTable",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01796P1KE3ZZ13vsPEp7MJy9Ed5oD6K8d1m",
         "object_type": "variable_workflow"
       },
       {
@@ -99,11 +87,12 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "output",
-          "name": "cpePassword",
-          "type": "datatype.string"
+          "scope": "local",
+          "name": "tenantId",
+          "type": "datatype.string",
+          "description": "Tenant ID for a given Display Name"
         },
-        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
+        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
         "object_type": "variable_workflow"
       },
       {
@@ -119,23 +108,35 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "3.6",
-          "scope": "input",
-          "name": "Version",
+          "value": "",
+          "scope": "local",
+          "name": "cpeName",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
+        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "username",
+          "scope": "output",
+          "name": "cpePassword",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
+        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "tenantName",
+          "type": "datatype.string",
+          "description": "Input from User that we will search on"
+        },
+        "unique_name": "variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk",
         "object_type": "variable_workflow"
       },
       {
@@ -150,14 +151,13 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.integer",
         "properties": {
-          "value": "",
           "scope": "output",
-          "name": "tenantTable",
-          "type": "datatype.string"
+          "name": "loopRun",
+          "type": "datatype.integer"
         },
-        "unique_name": "variable_workflow_01796P1KE3ZZ13vsPEp7MJy9Ed5oD6K8d1m",
+        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
         "object_type": "variable_workflow"
       }
     ],
@@ -167,7 +167,7 @@
       },
       "delete_workflow_instance": false,
       "description": "MSX Test",
-      "display_name": "MSX Gets CPE Enable Password M",
+      "display_name": "MSX Gets CPE Enable Password",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
@@ -324,42 +324,6 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01796OPX6YEGK728PMRfKAcFYer1jSCXCxI",
-        "name": "Set Variables",
-        "title": "Set Variables",
-        "type": "core.set_multiple_variables",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Set Variables",
-          "variables_to_update": [
-            {
-              "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.output.variable_workflow_01796P1KE3ZZ13vsPEp7MJy9Ed5oD6K8d1m$",
-              "variable_value_new": "$activity.definition_activity_01MU5ERfcV9Nmy53ZpL8fPoTstgBDh1fG.output.response_body$"
-            }
-          ]
-        },
-        "object_type": "definition_activity"
-      },
-      {
-        "unique_name": "definition_activity_01796W5PHYEGK5jGtrkKktKwM9mfXj7Jmw6",
-        "name": "Set Variables",
-        "title": "Set Variables",
-        "type": "core.set_multiple_variables",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Set Variables",
-          "variables_to_update": [
-            {
-              "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.output.variable_workflow_01796YSUJYPMZ53r6BqQpYoYqbVVoHzC9SQ$",
-              "variable_value_new": "$activity.definition_activity_01MaGdA5IFS5yCvg2puHotr1oS5FoEHzq.output.response_body$"
-            }
-          ]
-        },
-        "object_type": "definition_activity"
-      },
-      {
         "unique_name": "definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro",
         "name": "For Each",
         "title": "For Each Element in the Tenant  Array",
@@ -411,57 +375,6 @@
                         {
                           "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.local.variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8$",
                           "variable_value_new": "$activity.definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro.input.source_array[@].tenantId$"
-                        }
-                      ]
-                    },
-                    "object_type": "definition_activity"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "unique_name": "definition_activity_017962WH3OZZO0oJRTrXZeasRxNZMrz5ICY",
-            "name": "Condition Block",
-            "title": "Condition Block",
-            "type": "logic.if_else",
-            "base_type": "activity",
-            "properties": {
-              "continue_on_failure": false,
-              "display_name": "Condition Block"
-            },
-            "object_type": "definition_activity",
-            "blocks": [
-              {
-                "unique_name": "definition_activity_017962WIIOZY709E76AnMn1DAZmC1LFcOuI",
-                "name": "Condition Branch",
-                "title": "Condition Branch",
-                "type": "logic.condition_block",
-                "base_type": "activity",
-                "properties": {
-                  "condition": {
-                    "left_operand": "$activity.definition_activity_01MdheiQThJpfq1rSbvuncY147i7U3iro.input.source_array[@].displayName$",
-                    "operator": "ne",
-                    "right_operand": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_01Mdl9nJBpZZMFEJ6PWHZ9GgCaCIL0pJk$"
-                  },
-                  "continue_on_failure": false,
-                  "display_name": "Condition Branch"
-                },
-                "object_type": "definition_activity",
-                "actions": [
-                  {
-                    "unique_name": "definition_activity_0179652DIEMFC4PwxLvKny8oQcCDRd1l99U",
-                    "name": "Set Variables",
-                    "title": "Set Variables",
-                    "type": "core.set_multiple_variables",
-                    "base_type": "activity",
-                    "properties": {
-                      "continue_on_failure": false,
-                      "display_name": "Set Variables",
-                      "variables_to_update": [
-                        {
-                          "variable_to_update": "$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.output.variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8$",
-                          "variable_value_new": 1
                         }
                       ]
                     },
