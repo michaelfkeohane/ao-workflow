@@ -7,26 +7,24 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.string",
+        "schema_id": "datatype.secure_string",
         "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "tenantId",
-          "type": "datatype.string",
-          "description": "Tenant ID for a given Display Name"
+          "scope": "input",
+          "name": "MSX-Password",
+          "type": "datatype.secure_string"
         },
-        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
         "object_type": "variable_workflow"
       },
       {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "output",
-          "name": "cpePassword",
+          "scope": "local",
+          "name": "password",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       },
       {
@@ -38,39 +36,6 @@
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_0175FBQPTFM6V0CpXolhqRlvRSC5JkFhVJH",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.integer",
-        "properties": {
-          "scope": "local",
-          "name": "loopRun",
-          "type": "datatype.integer"
-        },
-        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "deviceSerial",
-          "type": "datatype.string",
-          "description": "Serial Number of the Device"
-        },
-        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
         "object_type": "variable_workflow"
       },
       {
@@ -100,6 +65,51 @@
         "properties": {
           "value": "",
           "scope": "input",
+          "name": "deviceSerial",
+          "type": "datatype.string",
+          "description": "Serial Number of the Device"
+        },
+        "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "tenantId",
+          "type": "datatype.string",
+          "description": "Tenant ID for a given Display Name"
+        },
+        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "MSX-Username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "scope": "local",
+          "name": "loopRun",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
           "name": "tenantName",
           "type": "datatype.string",
           "description": "Input from User that we will search on"
@@ -108,24 +118,14 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "scope": "input",
-          "name": "MSX-Password",
-          "type": "datatype.secure_string"
-        },
-        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "password",
+          "scope": "output",
+          "name": "cpePassword",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_01MhrRfJ2JKQDbsHM4TpvSjCO7XVcNpf4",
         "object_type": "variable_workflow"
       }
     ],
@@ -139,8 +139,7 @@
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
-        "target_id": "definition_target_017E0S5ISIQD97Txc4KoXFECn3qYrWkWHiq",
-        "execute_on_workflow_target": true
+        "specify_on_workflow_start": true
       }
     },
     "object_type": "definition_workflow",
@@ -155,7 +154,7 @@
           "accept": "application/json",
           "action_timeout": 180,
           "allow_auto_redirect": true,
-          "body": "{\"username\": \"$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC$\", \"password\": \"$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6$\"}",
+          "body": "{\n  \"username\": \"$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC$\",\n  \"password\": \"$workflow.definition_workflow_01MO1Ksx2AIhg6aKKYuSmyFozvuWoAiSt.input.variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6$\"\n}",
           "content_type": "application/json",
           "continue_on_error_status_code": false,
           "continue_on_failure": false,
@@ -645,24 +644,6 @@
       "description": "Category to support MSX Operational Workflows",
       "category_type": "custom",
       "object_type": "category"
-    }
-  },
-  "targets": {
-    "definition_target_017E0S5ISIQD97Txc4KoXFECn3qYrWkWHiq": {
-      "unique_name": "definition_target_017E0S5ISIQD97Txc4KoXFECn3qYrWkWHiq",
-      "name": "ao.vms-ott-aio11",
-      "title": "ao.vms-ott-aio11",
-      "type": "web-service.endpoint",
-      "base_type": "target",
-      "object_type": "definition_target",
-      "properties": {
-        "description": "ao.vms-ott-aio11.ciscovms.com/",
-        "disable_certificate_validation": true,
-        "display_name": "ao.vms-ott-aio11",
-        "host": "ao.vms-ott-aio11.ciscovms.com",
-        "no_runtime_user": true,
-        "protocol": "https"
-      }
     }
   }
 }
