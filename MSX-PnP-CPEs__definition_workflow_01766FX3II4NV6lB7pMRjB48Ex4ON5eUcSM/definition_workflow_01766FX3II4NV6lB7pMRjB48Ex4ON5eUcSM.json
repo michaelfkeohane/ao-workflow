@@ -7,6 +7,17 @@
     "base_type": "workflow",
     "variables": [
       {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.secure_string",
         "properties": {
           "scope": "input",
@@ -26,17 +37,6 @@
           "description": "Store Variable"
         },
         "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo",
         "object_type": "variable_workflow"
       }
     ],
@@ -65,7 +65,7 @@
           "accept": "application/json",
           "action_timeout": 180,
           "allow_auto_redirect": true,
-          "body": "{\"username\": \"$workflow.definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM.input.variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo$\", \"password\": \"$workflow.definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM.input.variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi$\"}\r\n",
+          "body": "{\n  \"username\": \"$workflow.definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM.input.variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo$\",\n  \"password\": \"$workflow.definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM.input.variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi$\"\n}",
           "content_type": "application/json",
           "continue_on_error_status_code": false,
           "continue_on_failure": false,
