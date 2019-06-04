@@ -7,17 +7,6 @@
     "base_type": "workflow",
     "variables": [
       {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo",
-        "object_type": "variable_workflow"
-      },
-      {
         "schema_id": "datatype.secure_string",
         "properties": {
           "scope": "input",
@@ -37,6 +26,17 @@
           "description": "Store Variable"
         },
         "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01766W908PLT91UKVnmEDYhsCDnGM5XMhzo",
         "object_type": "variable_workflow"
       }
     ],
@@ -188,7 +188,7 @@
       "properties": {
         "disable_certificate_validation": true,
         "display_name": "MSX-AIO15-PnP-Server",
-        "host": "198.135.4.153",
+        "host": "198.135.4.152",
         "no_runtime_user": true,
         "port": 8443,
         "protocol": "https"
