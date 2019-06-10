@@ -9,18 +9,6 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "Output",
-          "scope": "output",
-          "name": "Result",
-          "type": "datatype.string",
-          "description": "Store Variable"
-        },
-        "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
           "value": "",
           "scope": "input",
           "name": "Username",
@@ -37,6 +25,18 @@
           "type": "datatype.secure_string"
         },
         "unique_name": "variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Output",
+          "scope": "output",
+          "name": "Result",
+          "type": "datatype.string",
+          "description": "Store Variable"
+        },
+        "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
         "object_type": "variable_workflow"
       }
     ],
