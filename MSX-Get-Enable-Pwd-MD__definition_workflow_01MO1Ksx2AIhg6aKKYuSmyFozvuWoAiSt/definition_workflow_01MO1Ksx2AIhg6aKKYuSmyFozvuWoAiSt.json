@@ -11,11 +11,10 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "tenantId",
-          "type": "datatype.string",
-          "description": "Tenant ID for a given Display Name"
+          "name": "password",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
         "object_type": "variable_workflow"
       },
       {
@@ -34,22 +33,11 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "local",
-          "name": "cpeName",
+          "scope": "input",
+          "name": "MSX-Username",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01MO1P4CRVTB3LcH3hN2mIVD1vXAeXRAm",
+        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
         "object_type": "variable_workflow"
       },
       {
@@ -62,16 +50,6 @@
           "description": "Serial Number of the Device"
         },
         "unique_name": "variable_workflow_01MgcasXGewLmrmPKLRbJXlcXbMoXLOJN",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "scope": "input",
-          "name": "MSX-Password",
-          "type": "datatype.secure_string"
-        },
-        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
         "object_type": "variable_workflow"
       },
       {
@@ -89,11 +67,11 @@
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
+          "scope": "local",
+          "name": "cpeName",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_0166EFXNVUZFA2AfSuZSa2KgkNeXVchPXKC",
+        "unique_name": "variable_workflow_01MddaF53SiJtONHFU7R1gPyQ0HB7Swxy",
         "object_type": "variable_workflow"
       },
       {
@@ -101,10 +79,31 @@
         "properties": {
           "value": "",
           "scope": "local",
-          "name": "username",
-          "type": "datatype.string"
+          "name": "tenantId",
+          "type": "datatype.string",
+          "description": "Tenant ID for a given Display Name"
         },
-        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
+        "unique_name": "variable_workflow_01MddxTFHS53tJIh5y5sb5wTe8EFbSAk8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "scope": "local",
+          "name": "loopRun",
+          "type": "datatype.integer"
+        },
+        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "MSX-Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_0166EGIP7SZAC77d4ubd8uUqghDbBR4lmj6",
         "object_type": "variable_workflow"
       },
       {
@@ -119,13 +118,14 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.integer",
+        "schema_id": "datatype.string",
         "properties": {
+          "value": "",
           "scope": "local",
-          "name": "loopRun",
-          "type": "datatype.integer"
+          "name": "username",
+          "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_017968NBJDOG03EP5dkx6e3IwXFOFiiAYE8",
+        "unique_name": "variable_workflow_01MO1NgO3seDAuozfrk0sYOkp12e8D2e2",
         "object_type": "variable_workflow"
       }
     ],
@@ -139,7 +139,8 @@
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
-        "specify_on_workflow_start": true
+        "target_id": "definition_target_018PIMF99UNG42YpgsNoPalK8niSHBXCxSA",
+        "execute_on_workflow_target": true
       }
     },
     "object_type": "definition_workflow",
@@ -644,6 +645,23 @@
       "description": "Category to support MSX Operational Workflows",
       "category_type": "custom",
       "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_018PIMF99UNG42YpgsNoPalK8niSHBXCxSA": {
+      "unique_name": "definition_target_018PIMF99UNG42YpgsNoPalK8niSHBXCxSA",
+      "name": "TME.Demo",
+      "title": "TME.Demo",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "TME.Demo",
+        "host": "tme.demo.ciscomsx.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
     }
   }
 }
