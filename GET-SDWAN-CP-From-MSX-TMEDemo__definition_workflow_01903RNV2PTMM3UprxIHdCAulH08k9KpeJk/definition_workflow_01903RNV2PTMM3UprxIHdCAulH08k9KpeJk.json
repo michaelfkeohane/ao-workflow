@@ -1,33 +1,11 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01903RNV2PTMM3UprxIHdCAulH08k9KpeJk",
-    "name": "Get All SD-WAN Control Plane Status from MSX",
-    "title": "Get All SD-WAN Control Plane Status from MSX",
+    "name": "Get SD-WAN Control Plane Status from MSX",
+    "title": "Get SD-WAN Control Plane Status from MSX",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "MSX-Username",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01903ROP9VD8T2M8IClc5xoDygr1FUT3tRW",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01903ROP9VEW076GiyGJaKIWOnHXe63Keo2",
-        "object_type": "variable_workflow"
-      },
       {
         "schema_id": "datatype.integer",
         "properties": {
@@ -93,6 +71,28 @@
         },
         "unique_name": "variable_workflow_01903ROP9VBS24qVpkXB278D8jh2ljJkfex",
         "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "MSX-Username",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01903ROP9VD8T2M8IClc5xoDygr1FUT3tRW",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01903ROP9VEW076GiyGJaKIWOnHXe63Keo2",
+        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -101,7 +101,7 @@
       },
       "delete_workflow_instance": false,
       "description": "MSX Test",
-      "display_name": "Get All SD-WAN Control Plane Status from MSX",
+      "display_name": "Get SD-WAN Control Plane Status from MSX",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
