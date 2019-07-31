@@ -1,8 +1,8 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM",
-    "name": "MSX AIO23 List all iPnP Devices",
-    "title": "MSX AIO23 List all iPnP Devices",
+    "name": "MSX List all iPnP Devices Attacjed",
+    "title": "MSX List all iPnP Devices Attacjed",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
@@ -45,7 +45,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "display_name": "MSX AIO23 List all iPnP Devices",
+      "display_name": "MSX List all iPnP Devices Attacjed",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
