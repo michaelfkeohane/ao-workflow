@@ -1,11 +1,35 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_018VMEQNCQ6JH1644ah04BVHVdb6p371Nzg",
-    "name": "Show Configuration Commands",
-    "title": "Show Configuration Commands",
+    "name": "Retrieve MD Device Data from NSO",
+    "title": "Retrieve MD Device Data from NSO",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "/pnp-state/device",
+          "scope": "local",
+          "name": "ufp vmsservice devices",
+          "type": "datatype.string",
+          "description": "devices failes\n/vmsservice:ufp/vmsservice:vmsservice : fails\n/ufp:ufp/vmsservice : Works\n/ufp/vmsservice : Works\n/pnp-state/device\n/pnp-state/device{917A164Y9EK}"
+        },
+        "unique_name": "variable_workflow_018W91U7ADEO33PNEPJquAPV8s7PnP8RaNb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Result",
+          "type": "datatype.string",
+          "description": "NSO Configuration"
+        },
+        "unique_name": "variable_workflow_01903WT7F4A592PBVGtyoqwKdkxB6mw0C6q",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "datatype.string",
         "properties": {
@@ -27,18 +51,6 @@
         },
         "unique_name": "variable_workflow_018W8ST0X5RIX1mk0xReVch1s8CPlct44Dh",
         "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "/pnp-state/device",
-          "scope": "local",
-          "name": "ufp vmsservice devices",
-          "type": "datatype.string",
-          "description": "devices failes\n/vmsservice:ufp/vmsservice:vmsservice : fails\n/ufp:ufp/vmsservice : Works\n/ufp/vmsservice : Works\n/pnp-state/device\n/pnp-state/device{917A164Y9EK}"
-        },
-        "unique_name": "variable_workflow_018W91U7ADEO33PNEPJquAPV8s7PnP8RaNb",
-        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -46,7 +58,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "display_name": "Show Configuration Commands",
+      "display_name": "Retrieve MD Device Data from NSO",
       "favorite": false,
       "target": {
         "target_type": "json-rpc.endpoint",
@@ -158,6 +170,24 @@
           },
           "th": 1,
           "with_oper": true
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01903WW64M6E77BvWQcc52GpSYYcxp3WHin",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_018VMEQNCQ6JH1644ah04BVHVdb6p371Nzg.output.variable_workflow_01903WT7F4A592PBVGtyoqwKdkxB6mw0C6q$",
+              "variable_value_new": "$activity.definition_activity_018W90QRLOPJR0MQ8GlntSF9PMDWFiITkbM.output.output$"
+            }
+          ]
         },
         "object_type": "definition_activity"
       },
