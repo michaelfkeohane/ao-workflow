@@ -1,11 +1,22 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01903ITFIBNGQ4wdioGnlmxGcWd6SVcAjbl",
-    "name": "Get All SD-WAN Control Plane Status from vManage",
-    "title": "Get All SD-WAN Control Plane Status from vManage",
+    "name": "Get SD-WAN Control Plane Status from vManage",
+    "title": "Get SD-WAN Control Plane Status from vManage",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_01903IUA4OQBU6m7gp27tW9WIcwEWOtkLHb",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "datatype.integer",
         "properties": {
@@ -82,17 +93,6 @@
         },
         "unique_name": "variable_workflow_01903IUA4OOVB2Dm5SEq15chYMZn5dzMyZh",
         "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_01903IUA4OQBU6m7gp27tW9WIcwEWOtkLHb",
-        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -101,7 +101,7 @@
       },
       "delete_workflow_instance": false,
       "description": "MSX Test",
-      "display_name": "Get All SD-WAN Control Plane Status from vManage",
+      "display_name": "Get SD-WAN Control Plane Status from vManage",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
