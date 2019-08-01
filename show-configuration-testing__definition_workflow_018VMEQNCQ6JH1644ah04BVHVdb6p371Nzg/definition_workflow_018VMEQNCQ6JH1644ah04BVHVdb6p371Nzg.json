@@ -9,6 +9,17 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "/pnp:pnp/pnp:day0-common",
+          "scope": "local",
+          "name": "PnP Day0 Common",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_018W8ST0X5RIX1mk0xReVch1s8CPlct44Dh",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "/pnp-state/device",
           "scope": "local",
           "name": "ufp vmsservice devices",
@@ -33,23 +44,23 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Serial Number",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_0190WUG0VDEDP1tkQCwfOKxHh2ReRNBELFN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "/pnp:pnp/pnp:map",
           "scope": "local",
           "name": "path",
           "type": "datatype.string"
         },
         "unique_name": "variable_workflow_018VOLN3X4AQ93FZgIS8vs3cKRGcfkBZ2i1",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "/pnp:pnp/pnp:day0-common",
-          "scope": "local",
-          "name": "PnP Day0 Common",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_018W8ST0X5RIX1mk0xReVch1s8CPlct44Dh",
         "object_type": "variable_workflow"
       }
     ],
@@ -120,13 +131,13 @@
       {
         "unique_name": "definition_activity_018VOKNC0VP4G7jc8aKK2dxSwOljbz9jB0n",
         "name": "Show Configuration",
-        "title": "Show Configuration",
+        "title": "Show Configuration PnP Day0",
         "type": "jsonrpc.showconfig",
         "base_type": "activity",
         "properties": {
           "action_timeout": 180,
           "continue_on_failure": false,
-          "display_name": "Show Configuration",
+          "display_name": "Show Configuration PnP Day0",
           "max_size": 0,
           "path": "$workflow.definition_workflow_018VMEQNCQ6JH1644ah04BVHVdb6p371Nzg.local.variable_workflow_018W8ST0X5RIX1mk0xReVch1s8CPlct44Dh$",
           "runtime_user": {
@@ -156,7 +167,7 @@
           "continue_on_failure": false,
           "display_name": "Show Configuration ufp vmsservice devices",
           "max_size": 0,
-          "path": "$workflow.definition_workflow_018VMEQNCQ6JH1644ah04BVHVdb6p371Nzg.local.variable_workflow_018W91U7ADEO33PNEPJquAPV8s7PnP8RaNb$",
+          "path": "/pnp-state/device{$workflow.definition_workflow_018VMEQNCQ6JH1644ah04BVHVdb6p371Nzg.input.variable_workflow_0190WUG0VDEDP1tkQCwfOKxHh2ReRNBELFN$}",
           "runtime_user": {
             "override_target_runtime_user": false,
             "target_default": true
