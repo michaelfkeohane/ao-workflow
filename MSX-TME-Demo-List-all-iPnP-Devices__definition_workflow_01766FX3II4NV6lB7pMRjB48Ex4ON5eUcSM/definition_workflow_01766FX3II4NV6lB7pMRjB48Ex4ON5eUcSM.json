@@ -1,11 +1,23 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01766FX3II4NV6lB7pMRjB48Ex4ON5eUcSM",
-    "name": "MSX List all iPnP Devices Attacjed",
-    "title": "MSX List all iPnP Devices Attacjed",
+    "name": "MSX List all iPnP Devices Attached",
+    "title": "MSX List all iPnP Devices Attached",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Output",
+          "scope": "output",
+          "name": "Result",
+          "type": "datatype.string",
+          "description": "Store Variable"
+        },
+        "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
+        "object_type": "variable_workflow"
+      },
       {
         "schema_id": "datatype.string",
         "properties": {
@@ -26,18 +38,6 @@
         },
         "unique_name": "variable_workflow_01766WG8CNOTP5pOyMzPBIHhvYQfjobyHLi",
         "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "Output",
-          "scope": "output",
-          "name": "Result",
-          "type": "datatype.string",
-          "description": "Store Variable"
-        },
-        "unique_name": "variable_workflow_01766XXSUGY2Z25BCYCJDy7laCUmeSy3FEZ",
-        "object_type": "variable_workflow"
       }
     ],
     "properties": {
@@ -45,7 +45,7 @@
         "is_atomic": false
       },
       "delete_workflow_instance": false,
-      "display_name": "MSX List all iPnP Devices Attacjed",
+      "display_name": "MSX List all iPnP Devices Attached",
       "favorite": false,
       "target": {
         "target_type": "web-service.endpoint",
