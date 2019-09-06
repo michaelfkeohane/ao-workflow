@@ -7,6 +7,38 @@
     "base_type": "workflow",
     "variables": [
       {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "scope": "input",
+          "name": "2. Password",
+          "type": "datatype.secure_string"
+        },
+        "unique_name": "variable_workflow_019VMZ04TCX234xDuUEzrrAbgvYU0pu6VRO",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "3. Serial Number",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019VMZ6A576IW3U1cJr1uM2RJYxRP0E32Iq",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "output",
+          "name": "Action Failed",
+          "type": "datatype.boolean"
+        },
+        "unique_name": "variable_workflow_019UE5VPQ1RBB75pVBQGlFPrpaIaboHNWmc",
+        "object_type": "variable_workflow"
+      },
+      {
         "schema_id": "datatype.string",
         "properties": {
           "value": "",
@@ -33,32 +65,10 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "Device Instance Id",
+          "name": "1. Username",
           "type": "datatype.string"
         },
-        "unique_name": "variable_workflow_019UE5VPQ20UA2hzgbjYxXmYHX0nfyoQgru",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "input",
-          "name": "Action",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_019UE5VPQ226C3nCxZjIZiQEXyc72H2n11P",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.boolean",
-        "properties": {
-          "value": false,
-          "scope": "output",
-          "name": "Action Failed",
-          "type": "datatype.boolean"
-        },
-        "unique_name": "variable_workflow_019UE5VPQ1RBB75pVBQGlFPrpaIaboHNWmc",
+        "unique_name": "variable_workflow_019VMYU5OLOQ05GKD3t8p7x3p72oVVjrNBk",
         "object_type": "variable_workflow"
       }
     ],
@@ -72,7 +82,8 @@
       "favorite": false,
       "target": {
         "target_type": "json-rpc.endpoint",
-        "specify_on_workflow_start": true
+        "target_id": "definition_target_018VOEVXI346E2HZ3PxAVJ7pf3pclqYWq3w",
+        "execute_on_workflow_target": true
       }
     },
     "object_type": "definition_workflow",
@@ -123,6 +134,115 @@
         "object_type": "definition_activity"
       },
       {
+        "unique_name": "definition_activity_019VMDM69RKSN3aknl8Muq2HjDHHiCiUhMf",
+        "name": "HTTP Request",
+        "title": "MSX Login",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"username\": \"$workflow.definition_workflow_019UE5V2I7YXR1MMO6Uuu14t9MhTTXFAC1W.input.variable_workflow_019VMYU5OLOQ05GKD3t8p7x3p72oVVjrNBk$\",\n  \"password\": \"$workflow.definition_workflow_019UE5V2I7YXR1MMO6Uuu14t9MhTTXFAC1W.input.variable_workflow_019VMZ04TCX234xDuUEzrrAbgvYU0pu6VRO$\"\n}",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "description": "Used for AIO23 only",
+          "display_name": "MSX Login",
+          "method": "POST",
+          "relative_url": "/idm/api/v1/login",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_018N40SYBEWWH4J9x1T5jE2vSmRhFYPj1dX"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019VMHHJAUZ7H4FQDypy1kMrMYNAMDOwtf3",
+        "name": "JSONPath Query",
+        "title": "Extract MSX Token",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract MSX Token",
+          "input_json": "$activity.definition_activity_019VMDM69RKSN3aknl8Muq2HjDHHiCiUhMf.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.responseObject.userToken",
+              "jsonpath_query_name": "userToken",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019VMIO7I8O3T54p2q1tUVtpbLrLtVOaq3U",
+        "name": "HTTP Request",
+        "title": "Find the Device for Serial Number",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Bearer",
+              "value": ""
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_019VMHHJAUZ7H4FQDypy1kMrMYNAMDOwtf3.output.jsonpath_queries.userToken$"
+            }
+          ],
+          "description": "AIO23 Specific",
+          "display_name": "Find the Device for Serial Number",
+          "method": "GET",
+          "relative_url": "/manage/api/v1/devices?serialKey=$workflow.definition_workflow_019UE5V2I7YXR1MMO6Uuu14t9MhTTXFAC1W.input.variable_workflow_019VMZ6A576IW3U1cJr1uM2RJYxRP0E32Iq$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_018N40SYBEWWH4J9x1T5jE2vSmRhFYPj1dX"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_019VMKDU6K7GG3uHjjrSev8tG0Df9D5NuI1",
+        "name": "JSONPath Query",
+        "title": "Extract DeviceID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract DeviceID",
+          "input_json": "$activity.definition_activity_019VMIO7I8O3T54p2q1tUVtpbLrLtVOaq3U.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..deviceAttribute.deviceId",
+              "jsonpath_query_name": "deviceID",
+              "jsonpath_query_type": "string",
+              "zdate_type_format": ""
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
         "unique_name": "definition_activity_019UE5WE7OZ3S2EMixsYKtCEPEgrzOROYWL",
         "name": "Run Action",
         "title": "Run Action",
@@ -133,7 +253,7 @@
           "continue_on_failure": false,
           "display_name": "Run Action",
           "params": "{\"args\":\"\\\"do show run\\\"\"}",
-          "path": "/ncs:devices/device{CPE-c12643cf-356c-4ce7-8054-2975d1195c48}/config/ios:EXEC/exec",
+          "path": "/ncs:devices/device{$activity.definition_activity_019VMKDU6K7GG3uHjjrSev8tG0Df9D5NuI1.output.jsonpath_queries.deviceID$}/config/ios:EXEC/exec",
           "runtime_user": {
             "override_target_runtime_user": false,
             "target_default": true
@@ -275,6 +395,51 @@
     "categories": [
       "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
     ]
+  },
+  "targets": {
+    "definition_target_018N40SYBEWWH4J9x1T5jE2vSmRhFYPj1dX": {
+      "unique_name": "definition_target_018N40SYBEWWH4J9x1T5jE2vSmRhFYPj1dX",
+      "name": "AIO23",
+      "title": "AIO23",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "AIO23",
+        "host": "bxbdmzaio23.tme.ciscomsx.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    },
+    "definition_target_018VOEVXI346E2HZ3PxAVJ7pf3pclqYWq3w": {
+      "unique_name": "definition_target_018VOEVXI346E2HZ3PxAVJ7pf3pclqYWq3w",
+      "name": "AIO23 JSON RPC",
+      "title": "AIO23 JSON RPC",
+      "type": "json-rpc.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "default_runtime_user_id": "definition_runtime_user_018VMH9COMVB16IGKKmxLzMyri8UYcaJyeq",
+        "display_name": "AIO23 JSON RPC",
+        "host": "nso-md.query.consul",
+        "port": 8080,
+        "protocol": "http"
+      }
+    }
+  },
+  "runtime_users": {
+    "definition_runtime_user_018VMH9COMVB16IGKKmxLzMyri8UYcaJyeq": {
+      "unique_name": "definition_runtime_user_018VMH9COMVB16IGKKmxLzMyri8UYcaJyeq",
+      "name": "AIO23 JSON RPC",
+      "title": "AIO23 JSON RPC",
+      "type": "runtime_user.json-rpc_credentials",
+      "base_type": "runtime_user",
+      "object_type": "definition_runtime_user",
+      "properties": {
+        "display_name": "AIO23 JSON RPC"
+      }
+    }
   },
   "atomic_workflows": [
     "definition_workflow_019VB6S3OTZX06N6DmhcAhoAu4swQmg56Lq"
