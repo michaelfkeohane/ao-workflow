@@ -11,6 +11,39 @@
         "properties": {
           "value": "",
           "scope": "local",
+          "name": "Result XML",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019BVPN6SUF794J3Fm7vgRIvrQK83p3XXQs",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "configDiffResult",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019C0IWU34KCA0VXaAewfG4v9pvWmOnJo80",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "compare-config",
+          "scope": "static",
+          "name": "Action",
+          "type": "datatype.string"
+        },
+        "unique_name": "variable_workflow_019CT3P3MKENI72qf4S1oOcjwSgJtmf6DQO",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
           "name": "Configuration Differences",
           "type": "datatype.string"
         },
@@ -48,39 +81,6 @@
           "type": "datatype.boolean"
         },
         "unique_name": "variable_workflow_018NEZVELRUC45hYvy6bQzMTdSXkueu2fE9",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "local",
-          "name": "Result XML",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_019BVPN6SUF794J3Fm7vgRIvrQK83p3XXQs",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "",
-          "scope": "output",
-          "name": "configDiffResult",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_019C0IWU34KCA0VXaAewfG4v9pvWmOnJo80",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "compare-config",
-          "scope": "static",
-          "name": "Action",
-          "type": "datatype.string"
-        },
-        "unique_name": "variable_workflow_019CT3P3MKENI72qf4S1oOcjwSgJtmf6DQO",
         "object_type": "variable_workflow"
       }
     ],
