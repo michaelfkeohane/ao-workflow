@@ -53,6 +53,7 @@
       {
         "schema_id": "datatype.secure_string",
         "properties": {
+          "value": "",
           "scope": "input",
           "name": "New User Password",
           "type": "datatype.secure_string"
@@ -63,6 +64,7 @@
       {
         "schema_id": "datatype.secure_string",
         "properties": {
+          "value": "",
           "scope": "input",
           "name": "MSX-Password",
           "type": "datatype.secure_string"
