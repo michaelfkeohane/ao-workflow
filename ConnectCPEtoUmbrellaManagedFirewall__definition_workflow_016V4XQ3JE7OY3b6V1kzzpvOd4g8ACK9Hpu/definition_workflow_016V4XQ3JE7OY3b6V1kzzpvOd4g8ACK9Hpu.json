@@ -9,6 +9,19 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "Connect ISR to Umbrella CloudFWaaS",
+          "scope": "local",
+          "name": "templateName",
+          "type": "datatype.string",
+          "description": "Create CPE Connection to Umbrella Managed Firewall",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016V526Z5QV322qPIsKjzLKhvRcosZ1ixOH",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "",
           "scope": "input",
           "name": "Tenant Name",
@@ -16,31 +29,6 @@
           "is_required": false
         },
         "unique_name": "variable_workflow_016V98TJO1JBZ6HrEkmNPWBBnEoGfVFk1CV",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "local",
-          "name": "password",
-          "type": "datatype.secure_string",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_016V9J2TDT19V2RA5LF24Y2a6DT97GhhenU",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.secure_string",
-        "properties": {
-          "value": "*****",
-          "scope": "local",
-          "name": "preshared-key",
-          "type": "datatype.secure_string",
-          "description": "This is the key returned by the Umbrella Headend Creation:\n\\\"secret\\”:\n\nRetrieve this from the Umbrella Table based on Tenant",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_016WX6NQ7ETDU7TkmI9zCcug5ZQOZX0tzOn",
         "object_type": "variable_workflow"
       },
       {
@@ -57,15 +45,28 @@
         "object_type": "variable_workflow"
       },
       {
-        "schema_id": "datatype.boolean",
+        "schema_id": "datatype.secure_string",
         "properties": {
-          "value": false,
+          "value": "*****",
           "scope": "local",
-          "name": "tenantEntryFound",
-          "type": "datatype.boolean",
+          "name": "preshared-key",
+          "type": "datatype.secure_string",
+          "description": "This is the key returned by the Umbrella Headend Creation:\n\\\"secret\\”:\n\nRetrieve this from the Umbrella Table based on Tenant",
           "is_required": false
         },
-        "unique_name": "variable_workflow_01BCCS00W1BK302z6pZ6Q13UafkDnZdHcxl",
+        "unique_name": "variable_workflow_016WX6NQ7ETDU7TkmI9zCcug5ZQOZX0tzOn",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "local",
+          "name": "password",
+          "type": "datatype.secure_string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016V9J2TDT19V2RA5LF24Y2a6DT97GhhenU",
         "object_type": "variable_workflow"
       },
       {
@@ -73,7 +74,7 @@
         "properties": {
           "value": "",
           "scope": "input",
-          "name": "siteName",
+          "name": "Site Name",
           "type": "datatype.string",
           "is_required": false
         },
@@ -83,14 +84,13 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "Connect ISR to Umbrella CloudFWaaS",
-          "scope": "local",
-          "name": "templateName",
+          "value": "",
+          "scope": "output",
+          "name": "Connect CPE to Umbrella Result",
           "type": "datatype.string",
-          "description": "Create CPE Connection to Umbrella Managed Firewall",
           "is_required": false
         },
-        "unique_name": "variable_workflow_016V526Z5QV322qPIsKjzLKhvRcosZ1ixOH",
+        "unique_name": "variable_workflow_01BCUDXHQXVVN2P95ejjGtqxY2toCrSfMrC",
         "object_type": "variable_workflow"
       },
       {
@@ -103,6 +103,18 @@
           "is_required": false
         },
         "unique_name": "variable_workflow_016V54TT9R3J10bRP6TjWsxQiBjh4zaJMNe",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "tenantEntryFound",
+          "type": "datatype.boolean",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01BCCS00W1BK302z6pZ6Q13UafkDnZdHcxl",
         "object_type": "variable_workflow"
       }
     ],
@@ -139,54 +151,16 @@
         "object_type": "definition_activity",
         "actions": [
           {
-            "unique_name": "definition_activity_01BC9U1IHNJFS4vRfIr7c7OFmdYqWvgBl3E",
-            "name": "Select from Table",
-            "title": "Select from Table",
-            "type": "core.selectfromtable",
-            "base_type": "activity",
-            "properties": {
-              "action_timeout": 180,
-              "columns": [
-                {
-                  "column_name": "Tenant",
-                  "column_type": "string"
-                },
-                {
-                  "column_name": "PSK",
-                  "column_type": "string"
-                },
-                {
-                  "column_name": "TunnelId",
-                  "column_type": "string"
-                }
-              ],
-              "continue_on_failure": false,
-              "display_name": "Select from Table",
-              "input_table": "$global.variable_01BC38XIVM4Q73sG858vO18Y6Do7GRS6ujy.global.variable_01BC38XIVM4Q73sG858vO18Y6Do7GRS6ujy$",
-              "number_of_rows": {
-                "all_rows": true,
-                "at_most": false
-              },
-              "persist_output": false,
-              "skip_execution": false,
-              "sorting": {
-                "no_sort": true,
-                "sort_by": false
-              }
-            },
-            "object_type": "definition_activity"
-          },
-          {
             "unique_name": "definition_activity_01BCCDHUVQ2J87cTPDuhMRrRYDgPDUQ2J7h",
             "name": "For Each",
-            "title": "For Each",
+            "title": "For Each Tenant Entry",
             "type": "logic.for_each",
             "base_type": "activity",
             "properties": {
               "continue_on_failure": false,
-              "display_name": "For Each",
+              "display_name": "For Each Tenant Entry",
               "skip_execution": false,
-              "source_array": "$activity.definition_activity_01BC9U1IHNJFS4vRfIr7c7OFmdYqWvgBl3E.output.output_table$"
+              "source_array": "$global.variable_01BCENVVPMT4D7J4zW9KpIkzmgDagNQVOO2.global.variable_01BCENVVPMT4D7J4zW9KpIkzmgDagNQVOO2$"
             },
             "object_type": "definition_activity",
             "actions": [
@@ -206,17 +180,17 @@
                   {
                     "unique_name": "definition_activity_01BCCDTHN3AL46oMKAVMIuqFcN4wr0lSsMq",
                     "name": "Condition Branch",
-                    "title": "Condition Branch",
+                    "title": "Tenant Found Pull from the Database",
                     "type": "logic.condition_block",
                     "base_type": "activity",
                     "properties": {
                       "condition": {
                         "left_operand": "$activity.definition_activity_01BCCDHUVQ2J87cTPDuhMRrRYDgPDUQ2J7h.input.source_array[@].Tenant$",
                         "operator": "mregex",
-                        "right_operand": "$workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.input.variable_workflow_016V98TJO1JBZ6HrEkmNPWBBnEoGfVFk1CV$"
+                        "right_operand": ""
                       },
                       "continue_on_failure": false,
-                      "display_name": "Condition Branch",
+                      "display_name": "Tenant Found Pull from the Database",
                       "skip_execution": false
                     },
                     "object_type": "definition_activity",
@@ -300,7 +274,7 @@
           {
             "unique_name": "definition_activity_01BCCT0VOP9FL1gQTMpPAuE3XbpzZgio6bP",
             "name": "Condition Branch",
-            "title": "Condition Branch",
+            "title": "No Entry Found we are done",
             "type": "logic.condition_block",
             "base_type": "activity",
             "properties": {
@@ -310,20 +284,39 @@
                 "right_operand": false
               },
               "continue_on_failure": false,
-              "display_name": "Condition Branch",
+              "display_name": "No Entry Found we are done",
               "skip_execution": false
             },
             "object_type": "definition_activity",
             "actions": [
               {
+                "unique_name": "definition_activity_01BCUECUW9X0D0xFkOCUX4HIlZoxgpqcT19",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.output.variable_workflow_01BCUDXHQXVVN2P95ejjGtqxY2toCrSfMrC$",
+                      "variable_value_new": "No Umbrella Headend was found for Tenant: $workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.input.variable_workflow_016V98TJO1JBZ6HrEkmNPWBBnEoGfVFk1CV$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
                 "unique_name": "definition_activity_01BCCTEQSW25B0sl4Ca5F0SoRAEsinryKkP",
-                "name": "Failed",
-                "title": "Completed",
+                "name": "Succeeded",
+                "title": "Failed",
                 "type": "logic.completed",
                 "base_type": "activity",
                 "properties": {
-                  "completion_type": "failed-completed",
-                  "display_name": "Failed",
+                  "completion_type": "succeeded",
+                  "display_name": "Succeeded",
                   "result_message": "Tenant Entry not Found for $workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.input.variable_workflow_016V98TJO1JBZ6HrEkmNPWBBnEoGfVFk1CV$"
                 },
                 "object_type": "definition_activity"
@@ -642,20 +635,6 @@
         ]
       },
       {
-        "unique_name": "definition_activity_01BC2TRCDE0AJ5uzuL0yzSfHimZcwfJz00V",
-        "name": "Sleep",
-        "title": "Sleep",
-        "type": "core.sleep",
-        "base_type": "activity",
-        "properties": {
-          "continue_on_failure": false,
-          "display_name": "Sleep",
-          "skip_execution": false,
-          "sleep_interval": 1
-        },
-        "object_type": "definition_activity"
-      },
-      {
         "unique_name": "definition_activity_01BBXPN7TN7S95KvbyEP9ahZn39kcdwJ2MD",
         "name": "HTTP Request",
         "title": "Apply Template",
@@ -689,6 +668,25 @@
             "use_workflow_target": true,
             "use_workflow_target_group": false
           }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01BCZ8UN50AGO2c6FckedS1iLFUAqDPlSx1",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.output.variable_workflow_01BCUDXHQXVVN2P95ejjGtqxY2toCrSfMrC$",
+              "variable_value_new": "The Site $workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.input.variable_workflow_016V51W3JO53P3ZQ8j60ZnHatZPlNob2HGB$ was connected to the Umbrella Secure Gateway for Tenant: $workflow.definition_workflow_016V4XQ3JE7OY3b6V1kzzpvOd4g8ACK9Hpu.input.variable_workflow_016V98TJO1JBZ6HrEkmNPWBBnEoGfVFk1CV$"
+            }
+          ]
         },
         "object_type": "definition_activity"
       }
@@ -789,14 +787,14 @@
       },
       "object_type": "variable"
     },
-    "variable_01BC38XIVM4Q73sG858vO18Y6Do7GRS6ujy": {
-      "unique_name": "variable_01BC38XIVM4Q73sG858vO18Y6Do7GRS6ujy",
+    "variable_01BCENVVPMT4D7J4zW9KpIkzmgDagNQVOO2": {
+      "unique_name": "variable_01BCENVVPMT4D7J4zW9KpIkzmgDagNQVOO2",
       "schema_id": "tabletype_01BC38AFG5J7H1hT8upcMYILa3mn8LeCwQy",
       "properties": {
         "scope": "global",
         "name": "UmbrellaFWaaSTable",
         "type": "datatype.table",
-        "description": "Per Tenant",
+        "description": "Used as a Database for the Umbrella Service",
         "is_required": false
       },
       "object_type": "variable"
@@ -825,6 +823,12 @@
           "name": "TunnelId",
           "title": "TunnelId",
           "type": "string"
+        },
+        {
+          "is_required": true,
+          "name": "deleteId",
+          "title": "deleteId",
+          "type": "string"
         }
       ],
       "base_type": "datatype",
@@ -833,8 +837,8 @@
   },
   "atomic_workflows": [
     "definition_workflow_01BAP7MT13ZR33ZeRGRJUpT8l3LEamlyVAG",
-    "definition_workflow_019W2RTU02HVO3Jp1ZbS6hsaExgG0piMaJv",
     "definition_workflow_016V944487KDA5O6qKcxG3iNJkCUMiS3YQy",
+    "definition_workflow_019W2RTU02HVO3Jp1ZbS6hsaExgG0piMaJv",
     "definition_workflow_01BBDGXZRR19X132H6RGFE8RwQbDqO8b4Xv"
   ]
 }
