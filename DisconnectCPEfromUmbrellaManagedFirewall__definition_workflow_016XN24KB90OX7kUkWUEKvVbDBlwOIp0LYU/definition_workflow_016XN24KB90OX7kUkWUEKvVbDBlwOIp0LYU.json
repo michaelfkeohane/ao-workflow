@@ -9,6 +9,18 @@
       {
         "schema_id": "datatype.string",
         "properties": {
+          "value": "mkeohane",
+          "scope": "local",
+          "name": "username",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_016XN3WMRP5MI6t4WOvSdZDYZ6bLBZww1wN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
           "value": "",
           "scope": "output",
           "name": "Disconnect CPE from Umbrella Secure Internet Gateway Result",
@@ -64,18 +76,6 @@
           "is_required": false
         },
         "unique_name": "variable_workflow_016XN63WHIRAX2uS8Vh46CpI9YmMO4K65NY",
-        "object_type": "variable_workflow"
-      },
-      {
-        "schema_id": "datatype.string",
-        "properties": {
-          "value": "mkeohane",
-          "scope": "local",
-          "name": "username",
-          "type": "datatype.string",
-          "is_required": false
-        },
-        "unique_name": "variable_workflow_016XN3WMRP5MI6t4WOvSdZDYZ6bLBZww1wN",
         "object_type": "variable_workflow"
       }
     ],
@@ -528,8 +528,8 @@
     }
   },
   "atomic_workflows": [
-    "definition_workflow_019W2RTU02HVO3Jp1ZbS6hsaExgG0piMaJv",
     "definition_workflow_01BAP7MT13ZR33ZeRGRJUpT8l3LEamlyVAG",
-    "definition_workflow_016V944487KDA5O6qKcxG3iNJkCUMiS3YQy"
+    "definition_workflow_016V944487KDA5O6qKcxG3iNJkCUMiS3YQy",
+    "definition_workflow_019W2RTU02HVO3Jp1ZbS6hsaExgG0piMaJv"
   ]
 }
