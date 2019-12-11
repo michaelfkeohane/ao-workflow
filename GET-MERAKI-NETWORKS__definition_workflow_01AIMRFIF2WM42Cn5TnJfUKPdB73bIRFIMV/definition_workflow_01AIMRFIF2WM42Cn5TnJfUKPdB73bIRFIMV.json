@@ -1,8 +1,8 @@
 {
   "workflow": {
     "unique_name": "definition_workflow_01AIMRFIF2WM42Cn5TnJfUKPdB73bIRFIMV",
-    "name": "Get Meraki Network Devices",
-    "title": "Get Meraki Network Devices",
+    "name": "Get All Devices in a Meraki Network",
+    "title": "Get All Devices in a Meraki Network",
     "type": "generic.workflow",
     "base_type": "workflow",
     "variables": [
@@ -12,7 +12,8 @@
           "value": "",
           "scope": "output",
           "name": "Device List",
-          "type": "datatype.string"
+          "type": "datatype.string",
+          "is_required": false
         },
         "unique_name": "variable_workflow_01AIY7T188S0B3689D5j1yOzWTPyR2ShTxe",
         "object_type": "variable_workflow"
@@ -20,9 +21,11 @@
       {
         "schema_id": "datatype.secure_string",
         "properties": {
+          "value": "*****",
           "scope": "input",
           "name": "API Key",
-          "type": "datatype.secure_string"
+          "type": "datatype.secure_string",
+          "is_required": false
         },
         "unique_name": "variable_workflow_01AIYDER8EXMZ3mTI8DCvRulo5yfAIg1lRf",
         "object_type": "variable_workflow"
@@ -30,10 +33,11 @@
       {
         "schema_id": "datatype.string",
         "properties": {
-          "value": "",
+          "value": "329399",
           "scope": "input",
           "name": "OrgID",
-          "type": "datatype.string"
+          "type": "datatype.string",
+          "is_required": false
         },
         "unique_name": "variable_workflow_01AIYDP2I2LJE0oqcnIA1YIUqMTNpUMyFSA",
         "object_type": "variable_workflow"
@@ -45,8 +49,13 @@
       },
       "delete_workflow_instance": false,
       "description": "This workflow will pull all the devices from your OrgID. Requires your API Key",
-      "display_name": "Get Meraki Network Devices",
+      "display_name": "Get All Devices in a Meraki Network",
       "favorite": false,
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
       "target": {
         "target_type": "web-service.endpoint",
         "target_id": "definition_target_01AIMV6ZPKJ86277h5kIcz8BNmBBE9lZ1Ci",
@@ -81,6 +90,7 @@
             "override_target_runtime_user": false,
             "target_default": true
           },
+          "skip_execution": false,
           "target": {
             "override_workflow_target": true,
             "target_id": "definition_target_01AIMV6ZPKJ86277h5kIcz8BNmBBE9lZ1Ci"
@@ -97,6 +107,7 @@
         "properties": {
           "continue_on_failure": false,
           "display_name": "Set Variables",
+          "skip_execution": false,
           "variables_to_update": [
             {
               "variable_to_update": "$workflow.definition_workflow_01AIMRFIF2WM42Cn5TnJfUKPdB73bIRFIMV.output.variable_workflow_01AIY7T188S0B3689D5j1yOzWTPyR2ShTxe$",
@@ -108,8 +119,19 @@
       }
     ],
     "categories": [
-      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+      "category_01C5B6MS5YX7D3r4Cwn8ryKRtey0rPSowdm"
     ]
+  },
+  "categories": {
+    "category_01C5B6MS5YX7D3r4Cwn8ryKRtey0rPSowdm": {
+      "unique_name": "category_01C5B6MS5YX7D3r4Cwn8ryKRtey0rPSowdm",
+      "name": "Meraki",
+      "title": "Meraki",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
   },
   "targets": {
     "definition_target_01AIMV6ZPKJ86277h5kIcz8BNmBBE9lZ1Ci": {
