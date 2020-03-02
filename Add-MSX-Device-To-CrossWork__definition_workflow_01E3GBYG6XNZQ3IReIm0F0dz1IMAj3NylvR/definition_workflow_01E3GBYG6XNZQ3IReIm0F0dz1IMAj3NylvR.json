@@ -1,0 +1,969 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR",
+    "name": "Add Device to Crossworks",
+    "title": "Add Device to Crossworks",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Output",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.boolean",
+        "properties": {
+          "value": false,
+          "scope": "local",
+          "name": "Oper_Status",
+          "type": "datatype.boolean",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJW1A61jQBRT1dAY2bY7xfXFzzDV",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "CW-Ticket",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJW2OW6V9mlazh4yXBlN58p0fOJR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "CW-Token",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "ctl_ios_xe_1",
+          "scope": "input",
+          "name": "Device Name",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJVUM47KZpX6tjSpbSq2ZQQdQE4I",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "10.89.202.22",
+          "scope": "input",
+          "name": "Device IP",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Core_XE",
+          "scope": "input",
+          "name": "CrossWorks Policy",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E3GBZNJVY0D3TOh3NG4zh47YCTKQCiT9M",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "Add Device to Crossworks",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01DOYW832BGKJ7L7zds4skq44nLpoTIJFh3",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01E3GBZXSI3FW4ud47SphYLQ4NtYCQyN5nB",
+        "name": "HTTP Request",
+        "title": "Get Crossworks Ticket",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "text/plain",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "display_name": "Get Crossworks Ticket",
+          "method": "POST",
+          "relative_url": "/crosswork/sso/v1/tickets?username=admin\u0026password=C!sc01234",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC04DUPBW2teQW9eoy7BfVeMXadyuvJ",
+        "name": "Condition Block",
+        "title": "Did we fail to get a Ticket",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Did we fail to get a Ticket",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC0B2NGBJ6O085zhsNYhfBbi20NTcsR",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01E3GBZXSI3FW4ud47SphYLQ4NtYCQyN5nB.output.succeeded$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC0HM91KB2VIXZW1Ve8VSSWEOxqPYhG",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.output.variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6$",
+                      "variable_value_new": "\"Failed to Obtain Token from CrossWorks\""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC0M8NC5P3S2uy9HrabikE9UPoDxmde",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC0RNFCVV6Gxt0Me7DEp83DKmZi38v2",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJW2OW6V9mlazh4yXBlN58p0fOJR$",
+              "variable_value_new": "$activity.definition_activity_01E3GBZXSI3FW4ud47SphYLQ4NtYCQyN5nB.output.response_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC12YDQ9N7JLq44O5LV5ZbSQnmdIewy",
+        "name": "HTTP Request",
+        "title": "Get Token",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "text/plain",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "service=https://172.23.193.107:30603/app-dashboard",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Content-Type",
+              "value": "application/x-www-form-urlencoded"
+            }
+          ],
+          "display_name": "Get Token",
+          "method": "POST",
+          "relative_url": "/crosswork/sso/v1/tickets/$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJW2OW6V9mlazh4yXBlN58p0fOJR$",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC18ENUC75Xq5hjsDXz60vhvEGhTDqH",
+        "name": "Condition Block",
+        "title": "Failed to get Token",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Failed to get Token",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC1DCGMD23E7KHOyvBEGQitwLTyvuOE",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01E3GC12YDQ9N7JLq44O5LV5ZbSQnmdIewy.output.succeeded$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC1JRU8BA7V0C9DhfPfFLdQjObPvvEF",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.output.variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6$",
+                      "variable_value_new": "\"Failed To Aquire API Token from CrossWorks\""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC1PESO4O6IeJqbun9KdnDGXbsbHz3y",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC1WXOM1D4gxqBQktiUABQBC6i0gT6y",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$",
+              "variable_value_new": "$activity.definition_activity_01E3GC12YDQ9N7JLq44O5LV5ZbSQnmdIewy.output.response_body$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC24ZT26N5ODElJ6bnkekBWeqCEN8fS",
+        "name": "HTTP Request",
+        "title": "Add IOS-XE Device to CW",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\"data\": [\n\t{\n        \"inv_key_type\": \"NODE_IP\",\n        \"node_ip\": {\n            \"inet_af\": \"ROBOT_INET_ADDR_TYPE_v4\",\n            \"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\",\n            \"mask\": \"24\"\n        },\n        \"host_name\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVUM47KZpX6tjSpbSq2ZQQdQE4I$\",\n        \"profile\" :\"CenturyLink\",\n            \"admin_state\": \"ROBOT_ADMIN_STATE_UP\",\n            \"connectivity_info\": [\n                {\n                    \"type\": \"ROBOT_MSVC_TRANS_SSH\",\n                    \"ipaddrs\": [\n                        {\n                            \"inet_af\": \"ROBOT_INET_ADDR_TYPE_v4\",\n                            \"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\",\n                            \"mask\": \"24\"\n                        }\n                    ],\n                    \"port\": 22,\n                    \"timeout\": \"10\",\n                    \"reachability_state\": \"CONN_STATE_UNREACHABLE\"\n                },\n                {\n                    \"type\": \"ROBOT_MSVC_TRANS_SNMP\",\n                    \"ipaddrs\": [\n                        {\n                            \"inet_af\": \"ROBOT_INET_ADDR_TYPE_v4\",\n                            \"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\",\n                            \"mask\": \"24\"\n                        }\n                    ],\n                    \"port\": 161,\n                    \"timeout\": \"10\",\n                    \"reachability_state\": \"CONN_STATE_UNREACHABLE\"\n                }\n            ],\n            \"product_info\": {\n                \"software_type\": \"IOS XE\",\n                \"software_version\": \"16.09.3\",\n                \"product_type\": \"Cisco XRV9000\",\n                \"product_family\": \"Cisco XRv9K\",\n                \"product_series\": \"Cisco XRV9000 Series Virtual Routers\",\n                \"manufacturer\": \"Cisco Systems\",\n                \"capability\": [\"SNMP\"],\n\t\t\t\t\"device_type\": \"NODE_TYPE_ROUTER\"\n\n            },\n\t\t\t\"geo_info\": {\n\t\t\t    \"coordinates\": {\n\t\t\t    \t\"longitude\": -96.797,\n                \t\"latitude\": 32.77,\n\t\t\t    \t\"altitude\" : 0\n\t\t\t    },\n\t\t\t    \"range_incr\": {}\n\t\t\t  },\n\t\t\t  \"routing_info\": {\n\t\t\t\t\"mgmt_intf_ip\": [\n\t\t\t\t\t{\n\t\t\t\t\t\t\"inet_af\": 1,\n\t\t\t\t\t\t\"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\",\n\t\t\t\t\t\t\"mask\": \"24\"\n\t\t\t\t\t}\n\t\t\t\t],\n\t\t\t\t\"mgmt_vrf\": \"default\"\n\t\t\t  },\n        \t\"reachability_check\": \"REACH_CHECK_ENABLE\"\n    }\n  ],\n  \"user\": \"admin\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+            }
+          ],
+          "display_name": "Add IOS-XE Device to CW",
+          "method": "POST",
+          "relative_url": "/crosswork/inventory/v1/nodes",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC2BOG9CR1byVJV6x2fTfMV0zffxBhB",
+        "name": "Condition Block",
+        "title": "Failed to Add Device",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Failed to Add Device",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC2II1NQ35OouV6mJpsKonfZJbthnLB",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01E3GC24ZT26N5ODElJ6bnkekBWeqCEN8fS.output.succeeded$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC2OUQW3H5uKP7Rs3db9QbIl1cKLizR",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.output.variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6$",
+                      "variable_value_new": "\"Failed to Add IOS-XE Device to CrossWorks HI\""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC2TGR6ZP09Fd1D4cfshDYbZ0bAPS5u",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC30HIYU413eiv9ArYAV2GIxZLATcq2",
+        "name": "HTTP Request",
+        "title": "Get CDG UUID",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"limit\": 100,\n  \"filter\": {\n    \"node_ip\": {\n      \"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\"\n    }\n  }\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+            }
+          ],
+          "display_name": "Get CDG UUID",
+          "method": "POST",
+          "relative_url": "/crosswork/inventory/v1/dg/query",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC3AOOH1B2UvTMvIglUEOYjCfEhHeY6",
+        "name": "JSONPath Query",
+        "title": "Extract DG UUID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract DG UUID",
+          "input_json": "$activity.definition_activity_01E3GC30HIYU413eiv9ArYAV2GIxZLATcq2.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..duuid",
+              "jsonpath_query_name": "cdguuid",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC3IVBPKU3N7Jy13O5Xcx4so8oT8Aei",
+        "name": "HTTP Request",
+        "title": "Get Device UUID",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"limit\": 100,\n  \"filter\": {\n    \"node_ip\": {\n      \"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\"\n    }\n  }\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+            }
+          ],
+          "display_name": "Get Device UUID",
+          "method": "POST",
+          "relative_url": "/crosswork/inventory/v1/nodes/querybrief",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC3S6FB4F1R7K5z7XC2X70uE7Lsi0Zp",
+        "name": "JSONPath Query",
+        "title": "Extract UUID",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Extract UUID",
+          "input_json": "$activity.definition_activity_01E3GC3IVBPKU3N7Jy13O5Xcx4so8oT8Aei.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$..uuid",
+              "jsonpath_query_name": "uuid",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC3XV15JP4mXlFy82iSgKPfaoP19Jdw",
+        "name": "Condition Block",
+        "title": "No Device ID or CDG UUID",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "No Device ID or CDG UUID",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC44PU9IE5QR0E4mrZXf0MLxSTIRYsm",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": {
+                  "left_operand": "$activity.definition_activity_01E3GC30HIYU413eiv9ArYAV2GIxZLATcq2.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": false
+                },
+                "operator": "or",
+                "right_operand": {
+                  "left_operand": "$activity.definition_activity_01E3GC3IVBPKU3N7Jy13O5Xcx4so8oT8Aei.output.succeeded$",
+                  "operator": "eq",
+                  "right_operand": false
+                }
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC4B7WUL979YOI8zo7cgB8TYaWnmoxR",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.output.variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6$",
+                      "variable_value_new": "\"Failed to Obtain UUIDs from CrossWorks:"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC4GPXRQ87LGu4oW8yDoQpcN05hghsW",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC4O0EP7H2PCg8F7i9AifsUWR198MOQ",
+        "name": "HTTP Request",
+        "title": "Attach Device to CDG",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"dgDeviceMappings\": [\n    {\n      \"cdg_duuid\": \"$activity.definition_activity_01E3GC3AOOH1B2UvTMvIglUEOYjCfEhHeY6.output.jsonpath_queries.cdguuid$\",\n      \"device_uuid\": [\n        \"$activity.definition_activity_01E3GC3S6FB4F1R7K5z7XC2X70uE7Lsi0Zp.output.jsonpath_queries.uuid$\"\n      ],\n      \"mapping_oper\": \"ADD_OPER\"\n    }\n  ]\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+            }
+          ],
+          "display_name": "Attach Device to CDG",
+          "method": "PUT",
+          "relative_url": "/crosswork/inventory/v1/dg/devicemapping",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E3GC4W99JF76y9QjnWalww8Rn0MOcFTya",
+        "name": "Condition Block",
+        "title": "Failed to Attach to CDG",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Failed to Attach to CDG",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC53KIKVU4iCLHD6zPBGbMHUavJ6NkP",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01E3GC4O0EP7H2PCg8F7i9AifsUWR198MOQ.output.succeeded$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC59O8HKL4sOVFT69ZNyWZfwQM5lEuR",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.output.variable_workflow_01E3GBZNJVZSQ6lW1hXGHZ1XhL3M0eX9Lh6$",
+                      "variable_value_new": "\"Failed to Attach Device to Crossworks\""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC5E2S2NN6VKpRlbfznEPkhexaxlSEx",
+                "name": "Completed",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Completed"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC5JGPMTI7ANMnNEL43LTRqsxNquBpE",
+        "name": "While Loop",
+        "title": "While Loop",
+        "type": "logic.while",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "While Loop",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E3GC5OSEKGW4ekGVBnCBuX6Sle6d5SWZw",
+            "name": "Condition Branch",
+            "title": "Is Oper_Status still False",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJW1A61jQBRT1dAY2bY7xfXFzzDV$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Is Oper_Status still False",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E3GC5Y6CCEJ2ygI17C5DkGhCe1ahuAkwP",
+                "name": "HTTP Request",
+                "title": "Check the Operational Status",
+                "type": "web-service.http_request",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "allow_auto_redirect": true,
+                  "body": "{\n    \"limit\": 100,\n    \"filter\": {\"node_ip\" : {\"inet_addr\": \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVWEW6MpM1dD8UdWQZtf7xDRY7C$\"}}\n}",
+                  "content_type": "application/json",
+                  "continue_on_error_status_code": false,
+                  "continue_on_failure": false,
+                  "custom_headers": [
+                    {
+                      "name": "Authorization",
+                      "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+                    }
+                  ],
+                  "display_name": "Check the Operational Status",
+                  "method": "POST",
+                  "relative_url": "/crosswork/inventory/v1/nodes/querybrief",
+                  "runtime_user": {
+                    "override_target_runtime_user": false,
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "override_workflow_target": false,
+                    "override_workflow_target_group_criteria": false,
+                    "use_workflow_target": true,
+                    "use_workflow_target_group": false
+                  }
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC66RN75I5jz5OtFyiLaJUuNstRXIMm",
+                "name": "JSONPath Query",
+                "title": "JSONPath Query",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "JSONPath Query",
+                  "input_json": "$activity.definition_activity_01E3GC5Y6CCEJ2ygI17C5DkGhCe1ahuAkwP.output.response_body$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$..operational_state",
+                      "jsonpath_query_name": "operational_state",
+                      "jsonpath_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E3GC78QZJRI1offAKAZIp2PCqKXLFC2nu",
+                "name": "Condition Block",
+                "title": "Condition Block",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Condition Block",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_01E3GC7P2UYI820MiGEWTS3PsxZ8eUsm17T",
+                    "name": "Condition Branch",
+                    "title": "If Operate Status is ROBOT_OPER_STATE_OK",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_01E3GC66RN75I5jz5OtFyiLaJUuNstRXIMm.output.jsonpath_queries.operational_state$",
+                        "operator": "eq",
+                        "right_operand": "ROBOT_OPER_STATE_OK"
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "If Operate Status is ROBOT_OPER_STATE_OK",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01E3GC8AN5POT1H49e20cYo3nHNe1qzUSxk",
+                        "name": "Set Variables",
+                        "title": "Set Variables",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Variables",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJW1A61jQBRT1dAY2bY7xfXFzzDV$",
+                              "variable_value_new": true
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01E3GC8NU8BA12q5JqshwQwknVtyX2zOgIx",
+                        "name": "Sleep",
+                        "title": "Sleep",
+                        "type": "core.sleep",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Sleep",
+                          "skip_execution": false,
+                          "sleep_interval": 20
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E3GC8USBNAU7Ej1SGhJn5ILczLoJMWDM2",
+        "name": "HTTP Request",
+        "title": "Enable KPI Profile",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"devices\": [\n    \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVUM47KZpX6tjSpbSq2ZQQdQE4I$\"\n  ],\n  \"kpi_profiles\": [\n    \"$workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.input.variable_workflow_01E3GBZNJVY0D3TOh3NG4zh47YCTKQCiT9M$\"\n  ]\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $workflow.definition_workflow_01E3GBYG6XNZQ3IReIm0F0dz1IMAj3NylvR.local.variable_workflow_01E3GBZNJVOKO1QkNFYUCVif5BaJg815CFl$"
+            }
+          ],
+          "display_name": "Enable KPI Profile",
+          "method": "POST",
+          "relative_url": "/crosswork/hi/v1/kpiprofileassoc/write",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_1BMfMXSnJMyt5Ihqi7rWJr5N8cf"
+    ]
+  },
+  "targets": {
+    "definition_target_01DOYW832BGKJ7L7zds4skq44nLpoTIJFh3": {
+      "unique_name": "definition_target_01DOYW832BGKJ7L7zds4skq44nLpoTIJFh3",
+      "name": "Crossworks-HI",
+      "title": "Crossworks-HI",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "10.18.180.60",
+        "disable_certificate_validation": true,
+        "display_name": "Crossworks-HI",
+        "host": "10.18.180.60",
+        "no_runtime_user": true,
+        "port": 30603,
+        "protocol": "https"
+      }
+    }
+  }
+}
