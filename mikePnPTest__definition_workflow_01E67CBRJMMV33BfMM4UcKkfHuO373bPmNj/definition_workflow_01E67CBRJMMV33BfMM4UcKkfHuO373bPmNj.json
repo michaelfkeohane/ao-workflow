@@ -1,0 +1,292 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_01E67CBRJMMV33BfMM4UcKkfHuO373bPmNj",
+    "name": "List AIO15 PnP Devices",
+    "title": "List AIO15 PnP Devices",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "mkeohane",
+          "scope": "input",
+          "name": "Username",
+          "type": "datatype.string",
+          "is_required": true
+        },
+        "unique_name": "variable_workflow_01E67G8E2CCV03FOdm7jfrSbHPloEd0xRTY",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.secure_string",
+        "properties": {
+          "value": "*****",
+          "scope": "input",
+          "name": "Password",
+          "type": "datatype.secure_string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E67GF7STA9C2Q18jk64VbElwcOMPk1KC3",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "\"Welcome Back Ed\"",
+          "scope": "output",
+          "name": "Output",
+          "type": "datatype.string",
+          "is_required": false
+        },
+        "unique_name": "variable_workflow_01E67TW6K6AR12k7qOhejA3hG7TgPlfhklE",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "display_name": "List AIO15 PnP Devices",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "web-service.endpoint",
+        "target_id": "definition_target_01AP75PZQVD6M6jknR8qLXWqzYZbkZ4Vhvt",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_01E67HAUVIB7Z1JtIvql90QW1oW4A5M1q9s",
+        "name": "HTTP Request",
+        "title": "MSX Login",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "body": "{\n  \"username\": \"$workflow.definition_workflow_01E67CBRJMMV33BfMM4UcKkfHuO373bPmNj.input.variable_workflow_01E67G8E2CCV03FOdm7jfrSbHPloEd0xRTY$\",\n  \"password\": \"$workflow.definition_workflow_01E67CBRJMMV33BfMM4UcKkfHuO373bPmNj.input.variable_workflow_01E67GF7STA9C2Q18jk64VbElwcOMPk1KC3$\"\n}",
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": true,
+          "display_name": "MSX Login",
+          "method": "POST",
+          "relative_url": "/idm/api/v1/login",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E67VO1TW6MG4CC7J7CUz3F6BgMK0aDmoF",
+        "name": "Condition Block",
+        "title": "Login Success",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Login Success",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_01E67VO5UBOGG66cfjYt9mUO2c2T0awbaUi",
+            "name": "Condition Branch",
+            "title": "Condition Branch",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_01E67HAUVIB7Z1JtIvql90QW1oW4A5M1q9s.output.succeeded$",
+                "operator": "eq",
+                "right_operand": false
+              },
+              "continue_on_failure": false,
+              "display_name": "Condition Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_01E67WTYM82MS66eVkL2jitubkVTNGiOsBT",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_01E67CBRJMMV33BfMM4UcKkfHuO373bPmNj.output.variable_workflow_01E67TW6K6AR12k7qOhejA3hG7TgPlfhklE$",
+                      "variable_value_new": "\"Failed to Login to MSX\""
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_01E67WIJQIG841TXZYfX0W6CE0ckxV72haj",
+                "name": "Succeeded",
+                "title": "Completed",
+                "type": "logic.completed",
+                "base_type": "activity",
+                "properties": {
+                  "completion_type": "succeeded",
+                  "display_name": "Succeeded"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_01E67LW8OA5N44sgRbPvfDIdJ0awvxzQ7LY",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_01E67HAUVIB7Z1JtIvql90QW1oW4A5M1q9s.output.response_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.responseObject.userToken",
+              "jsonpath_query_name": "userToken",
+              "jsonpath_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E67O71GTC6J4fzHBPj9KZxbtRW6ZyUh15",
+        "name": "HTTP Request",
+        "title": "Query Device Manager",
+        "type": "web-service.http_request",
+        "base_type": "activity",
+        "properties": {
+          "accept": "application/json",
+          "action_timeout": 180,
+          "allow_auto_redirect": true,
+          "content_type": "application/json",
+          "continue_on_error_status_code": false,
+          "continue_on_failure": false,
+          "custom_headers": [
+            {
+              "name": "Authorization",
+              "value": "Bearer $activity.definition_activity_01E67LW8OA5N44sgRbPvfDIdJ0awvxzQ7LY.output.jsonpath_queries.userToken$"
+            }
+          ],
+          "display_name": "Query Device Manager",
+          "method": "GET",
+          "relative_url": "/admin/devices",
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": true,
+            "target_id": "definition_target_01772IL2AC5K777eMfJEU257f3rgjsJdsCv"
+          }
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_01E681KH6OLWZ1MCRKI0McmHk0S13WouxsX",
+        "name": "Send Email",
+        "title": "Send Email",
+        "type": "email.smtp_send_email",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "display_name": "Send Email",
+          "runtime_user": {
+            "override_target_runtime_user": false,
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "override_workflow_target": false,
+            "override_workflow_target_group_criteria": false,
+            "use_workflow_target": true,
+            "use_workflow_target_group": false
+          }
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_015WSP6FKOE1G0rdwqNdMBv1RDpYSbj4pfX"
+    ]
+  },
+  "categories": {
+    "category_015WSP6FKOE1G0rdwqNdMBv1RDpYSbj4pfX": {
+      "unique_name": "category_015WSP6FKOE1G0rdwqNdMBv1RDpYSbj4pfX",
+      "name": "MSX Operations",
+      "title": "MSX Operations",
+      "type": "basic.category",
+      "base_type": "category",
+      "description": "Category to support MSX Operational Workflows",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "targets": {
+    "definition_target_01772IL2AC5K777eMfJEU257f3rgjsJdsCv": {
+      "unique_name": "definition_target_01772IL2AC5K777eMfJEU257f3rgjsJdsCv",
+      "name": "MSX-AIO15-PnP-Server",
+      "title": "MSX-AIO15-PnP-Server",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "disable_certificate_validation": true,
+        "display_name": "MSX-AIO15-PnP-Server",
+        "host": "bxbdmzaio15.tme.ciscomsx.com",
+        "no_runtime_user": true,
+        "port": 8443,
+        "protocol": "https"
+      }
+    },
+    "definition_target_01AP75PZQVD6M6jknR8qLXWqzYZbkZ4Vhvt": {
+      "unique_name": "definition_target_01AP75PZQVD6M6jknR8qLXWqzYZbkZ4Vhvt",
+      "name": "AIO15",
+      "title": "AIO15",
+      "type": "web-service.endpoint",
+      "base_type": "target",
+      "object_type": "definition_target",
+      "properties": {
+        "description": "MSX Server AIO15",
+        "disable_certificate_validation": true,
+        "display_name": "AIO15",
+        "host": "bxbdmzaio15.tme.ciscomsx.com",
+        "no_runtime_user": true,
+        "protocol": "https"
+      }
+    }
+  }
+}
