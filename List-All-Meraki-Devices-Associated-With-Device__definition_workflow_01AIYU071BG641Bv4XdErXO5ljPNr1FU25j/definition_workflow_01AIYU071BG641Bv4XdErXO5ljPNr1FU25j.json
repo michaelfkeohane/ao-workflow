@@ -59,7 +59,7 @@
           "custom_headers": [
             {
               "name": "X-Cisco-Meraki-API-Key",
-              "value": "38a0490d06be1c17786470485a3e6df920bb633d"
+              "value": ""
             }
           ],
           "display_name": "Get the list of Network Clients",
